@@ -3,7 +3,6 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using RuntimeExec;
-using SqlOrm;
 
 namespace DailySchedule
 {

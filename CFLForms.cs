@@ -1,8 +1,5 @@
 ﻿using CFL_1.CFLGraphics;
-using CFL_1.CFLGraphics.Editor;
 using System.Collections.Generic;
-using CFL_1.CFL_System.SqlServerOrm;
-using CFL_1.CFL_System.DB;
 
 namespace CFL_1.CFL_System
 {
@@ -18,7 +15,6 @@ namespace CFL_1.CFL_System
         public Form_config_connection form_config_connection ;
         public Form_user form_user ;
         public Form_planing_journalier form_planingJournalier;
-        public Form_codeEditor form_codeEditor ;
         public Form_test form_test ;
 
 
@@ -47,19 +43,15 @@ namespace CFL_1.CFL_System
         public void initForms()
         {
             form_accueil           = new Form_accueuil();
-            form_config_entreprise = new Form_config_entreprise();
             form_config_connection = new Form_config_connection();
             form_user              = new Form_user();
             form_planingJournalier = new Form_planing_journalier();
-            form_codeEditor        = new Form_codeEditor();
             form_test              = new Form_test();
 
             forms.Add(form_accueil);
-            forms.Add(form_config_entreprise);
             forms.Add(form_config_connection);
             forms.Add(form_user);
             forms.Add(form_planingJournalier);
-            forms.Add(form_codeEditor);
 
             forms.Add(form_test);
         }

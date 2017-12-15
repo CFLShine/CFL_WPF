@@ -297,7 +297,6 @@ namespace ObjectEdit
         private List<PropertyConfig> __propertiesConfigs = new List<PropertyConfig>();
 
         private Type __objectType = null;
-
        
     }
 }

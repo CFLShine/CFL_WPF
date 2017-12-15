@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using CFL_1.CFL_System.DB;
 using CFL_1.CFL_System.SqlServerOrm;
 using ShLayouts;
 
@@ -20,7 +19,6 @@ namespace CFL_1.CFLGraphics
         {
             Name = GetType().Name; 
             init();
-            CFLDBConnection.instance.NotificationEvent += GetNotification;
         }
 
         #region CFL_form functions

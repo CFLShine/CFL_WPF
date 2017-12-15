@@ -5,7 +5,6 @@ using System.Windows.Media;
 using CFL_1.CFL_Data;
 using CFL_1.CFL_Data.CFL_DataManaging;
 using CFL_1.CFL_System;
-using CFL_1.CFL_System.DB;
 using CFL_1.CFL_System.SqlServerOrm;
 using ShLayouts;
 

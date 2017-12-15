@@ -91,9 +91,7 @@ namespace CFL_1
         private Button __buttonDiversRepertoire;
         private Button __buttonDiversMessagerie;
 
-        private Button __buttonCodeEdit;
         private Button __buttonTest;
-        private Button __buttonTestGraph;
         private Button __buttonTestPlanningsJournaliers;
 
         #endregion private controls
@@ -201,20 +199,10 @@ namespace CFL_1
         private void buttonMessagerie_Click(object sender, RoutedEventArgs e)
         { }
 
-        private void buttonCodeEdit_Click(object sender, RoutedEventArgs e)
-        {
-            CFLForms.instance.currentForm = CFLForms.instance.form_codeEditor;
-        }
-
         // Test
         private void buttonTest_Click(object sender, RoutedEventArgs e)
         {
             CFLForms.instance.currentForm = CFLForms.instance.form_test;
-        }
-
-        private void buttonTestGraph_Click(object sender, RoutedEventArgs e)
-        {
-            CFLForms.instance.currentForm = CFLForms.instance.form_config_entreprise;
         }
 
         private void buttonTestPlaningsJournaliers_Click(object sender, RoutedEventArgs e)
@@ -298,15 +286,12 @@ namespace CFL_1
             __buttonDiversRepertoire         = new Button() ;
             __buttonDiversMessagerie         = new Button() ;
                                                             
-            __buttonCodeEdit                 = new Button() ;
             __buttonTest                     = new Button() ;
-            __buttonTestGraph                = new Button(){ Content = "Test Graph" };
             __buttonTestPlanningsJournaliers = new Button(){ Content = "Test Plannings journaliers" };
 
             __buttonDiversRepertoire.Content    = "Répertoire" ;
             __buttonDiversMessagerie.Content    = "Messagerie" ;
 
-            __buttonCodeEdit.Content            = "Code" ;
             __buttonTest.Content                = "Test" ;
 
             __buttonConfigConnectionDB.Margin       = new Thickness(1, 0, 1, 0);
@@ -329,9 +314,7 @@ namespace CFL_1
             __buttonDiversRepertoire.Margin         = new Thickness(1, 0, 1, 0);
             __buttonDiversMessagerie.Margin         = new Thickness(1, 0, 1, 0);
                                                                                 
-            __buttonCodeEdit.Margin                 = new Thickness(1, 0, 1, 0);
             __buttonTest.Margin                     = new Thickness(1, 0, 1, 0);
-            __buttonTestGraph.Margin                = new Thickness(1, 0, 1, 0);
             __buttonTestPlanningsJournaliers.Margin = new Thickness(1, 0, 1, 0);
 
             __buttonConfigConnectionDB.Click       += buttonConfigConnectionDB_Click;
@@ -353,9 +336,7 @@ namespace CFL_1
             __buttonDiversRepertoire.Click         += buttonRepertoire_Click;
             __buttonDiversMessagerie.Click         += buttonMessagerie_Click;
                                                    
-            __buttonCodeEdit.Click                 += buttonCodeEdit_Click;
             __buttonTest.Click                     += buttonTest_Click;
-            __buttonTestGraph.Click                += buttonTestGraph_Click;
             __buttonTestPlanningsJournaliers.Click += buttonTestPlaningsJournaliers_Click;
 
             // panels
@@ -406,9 +387,7 @@ namespace CFL_1
             __panelDivers.Children.Add(__buttonDiversRepertoire);
             __panelDivers.Children.Add(__buttonDiversMessagerie);
 
-            __panelDev.Children.Add(__buttonCodeEdit);
             __panelDev.Children.Add(__buttonTest);
-            __panelDev.Children.Add(__buttonTestGraph) ;
             __panelDev.Children.Add(__buttonTestPlanningsJournaliers);
 
             __tabItemConfiguration.Content = __panelConfiguration;

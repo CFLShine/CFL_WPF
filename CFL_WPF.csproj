@@ -34,8 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Npgsql, Version=3.2.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\CFLSolution\packages\Npgsql.3.2.6\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\CFLSolution\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -48,11 +55,57 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\CFLSolution\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\CFLSolution\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\CFLSolution\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\CFLSolution\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\CFLSolution\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\CFLSolution\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="CFLControls\CTRL_FicheDefunt.cs" />
+    <Compile Include="CFLControls\CTRL_Sepulture.cs" />
+    <Compile Include="CFLForms.cs" />
+    <Compile Include="InterControlsData.cs" />
+    <Compile Include="MyControls\BoxLayouts\BoxLayout.cs" />
+    <Compile Include="MyControls\BoxLayouts\boxLayoutCell.cs" />
+    <Compile Include="MyControls\BoxLayouts\BoxLayoutModel.cs" />
+    <Compile Include="MyControls\BoxLayouts\LayoutSpecialElements.cs" />
+    <Compile Include="MyControls\BoxLayouts\MesureHelper.cs" />
+    <Compile Include="MyControls\CustomControls\TextBoxDate.cs" />
+    <Compile Include="MyControls\DailySchedule\ActionControl.cs" />
+    <Compile Include="MyControls\DailySchedule\ActionInfo.cs" />
+    <Compile Include="MyControls\DailySchedule\DaylySchduleControl.cs" />
+    <Compile Include="MyControls\DailySchedule\DaylyScheduleInfo.cs" />
+    <Compile Include="MyControls\DailySchedule\SheetInfo.cs" />
+    <Compile Include="MyControls\DailySchedule\ZoneControl.cs" />
+    <Compile Include="MyControls\DailySchedule\ZoneInfo.cs" />
+    <Compile Include="MyControls\DailySchedule\ZonePatern.cs" />
+    <Compile Include="MyControls\FormLayout\FormLayout.cs" />
+    <Compile Include="MyControls\ObjectEdit\ObjectEditControl.cs" />
+    <Compile Include="MyControls\ObjectEdit\PropertiesEditControl.cs" />
+    <Compile Include="MyControls\ObjectEdit\PropertyEditControl.cs" />
+    <Compile Include="MyControls\ObjectEdit\PropertyEditControlConfig.cs" />
+    <Compile Include="MyControls\ObjectTreeEditor\ObjectTreeEditor.cs" />
+    <Compile Include="MyControls\PM_grid\PM_Grid.cs" />
+    <Compile Include="MyControls\PM_grid\PM_GridCell.cs" />
+    <Compile Include="MyControls\PM_grid\PM_GridModel.cs" />
+    <Compile Include="Resource1.Designer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,6 +114,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CFLForm.cs" />
+    <Compile Include="Form_accueuil.cs" />
+    <Compile Include="Form_config_connection.cs" />
+    <Compile Include="Form_config_entreprise.cs" />
+    <Compile Include="Form_planing_journalier.cs" />
+    <Compile Include="Form_test.cs" />
+    <Compile Include="Form_user.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -84,6 +145,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,6 +154,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CFLModels\CFLModels.csproj">
+      <Project>{dd377105-dc4b-4e55-868a-6f957920dd5e}</Project>
+      <Name>CFLModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CFLServer\CFLServer.csproj">
+      <Project>{4E7CCCCE-288D-4B76-ABBB-E5CD0FF798CD}</Project>
+      <Name>CFLServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CFLSystem\CFLSystem.csproj">
+      <Project>{33b7e6f6-0ce5-4957-a6f2-15fcbbe72982}</Project>
+      <Name>CFLSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
