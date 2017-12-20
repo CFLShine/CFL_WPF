@@ -76,7 +76,7 @@ namespace ObjectEdit
                 {
                     Type _t = PropertyInfo.PropertyType;
                     if(_t.IsEnum)
-                        __control = new PropertyEnumClontrol();
+                        __control = new PropertyEnumControl();
                     else if(_t == typeof(Base) || _t.IsSubclassOf(typeof(Base)))
                         __control = new PropertyObjectSelectionControl();
                     else if(__propertiesTypes_controlsTypes.ContainsKey(_t))
@@ -101,7 +101,7 @@ namespace ObjectEdit
             { typeof(double)    , typeof(PropertyDoubleControl)   },
             { typeof(DateTime?) , typeof(PropertyDateControl)     },
             { typeof(TimeSpan?) , typeof(PropertyTimeSpanControl) },
-            { typeof(Enum)      , typeof(PropertyEnumClontrol)    }
+            { typeof(Enum)      , typeof(PropertyEnumControl)    }
         };
     }
 
@@ -273,7 +273,8 @@ namespace ObjectEdit
             RemoveHeader();
             __labelHeader = new Label()
             { 
-                Height = 27,// ControlsHeight, 
+                Height = 20,
+                VerticalContentAlignment = System.Windows.VerticalAlignment.Stretch,
                 Background = __headerBackGround,
                 Content = Header
             };

@@ -17,7 +17,9 @@ using CustomControls;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using CFL_1.CFLGraphics.CFLControls;
 using CFL_1.CFL_System.DB;
+using CFL_DataManaging;
 using CFL_1.CFL_System;
+using MSTD.ShBase;
 
 namespace CFL_1.CFLGraphics
 {
@@ -51,7 +53,7 @@ namespace CFL_1.CFLGraphics
 
         private void buttonExe_Click(object sender, RoutedEventArgs e)
         {
-            DBContext_CFL _context = DBContext_CFL.instance;
+            DBContext_CFL _context = DBContext_CFL.Instance;
 
             Defunt dft = null;
 
@@ -94,14 +96,14 @@ namespace CFL_1.CFLGraphics
                         
             string query = _select.Query();
 
-            List<Defunt> dfts = new DBLoader<Defunt>(_context.Connection, _context).IncludeCascade().ToList(_select);
+            List<Base> dfts = new DBLoader(_context.Connection, _context).IncludeCascade().ToList(_select);
 
 
         }
 
         private void RowQuery()
         {
-            DBContext_CFL _context = DBContext_CFL.instance;
+            DBContext_CFL _context = DBContext_CFL.Instance;
             var _con = _context.Connection.Connection;
 
             string query = "SELECT * FROM defunt;";
@@ -120,7 +122,7 @@ namespace CFL_1.CFLGraphics
 
         private void PopulateDB()
         {
-            DBContext_CFL _context = DBContext_CFL.instance;
+            DBContext_CFL _context = DBContext_CFL.Instance;
 
             Defunt dft = null;
 
@@ -163,7 +165,7 @@ namespace CFL_1.CFLGraphics
             AddElementToLayoutMenuTop(maskedTextBox);
 
             
-            List<Commune> _l = null;
+            List<Base> _l = null;
             Gate.Load.Communes(ref _l);
 
             Dft.Identite.Nom = "MARIE";

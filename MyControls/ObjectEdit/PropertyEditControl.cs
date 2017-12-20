@@ -23,6 +23,8 @@ namespace ObjectEdit
             Init();
         }
 
+        public abstract PropertyEditControl Copy();
+
         /// <summary>
         /// L'objet de class <see cref="Base"/> édité par le <see cref="ObjectEditControl"/> contenant
         /// ce <see cref="PropertyEditControl"/>.
@@ -95,6 +97,11 @@ namespace ObjectEdit
 
     public class PropertyTextControl : PropertyEditControl
     {
+        public override PropertyEditControl Copy()
+        {
+            return new PropertyTextControl();
+        }
+
         protected override void Init()
         {
             Add(__textBox); 
@@ -120,6 +127,11 @@ namespace ObjectEdit
 
     public class PropertyBoolControl : PropertyEditControl
     {
+        public override PropertyEditControl Copy()
+        {
+            return new PropertyBoolControl();
+        }
+
         protected override void Init()
         {
             Add(__checkBox); 
@@ -146,6 +158,11 @@ namespace ObjectEdit
 
     public class PropertyIntControl : PropertyTextControl
     {
+        public override PropertyEditControl Copy()
+        {
+            return new PropertyIntControl();
+        }
+
         protected override void OnKeyUp(object sender, RoutedEventArgs e)
         {
             string _new = __textBox.Text;
@@ -161,6 +178,11 @@ namespace ObjectEdit
 
     public class PropertyLongControl : PropertyTextControl
     {
+        public override PropertyEditControl Copy()
+        {
+            return new PropertyLongControl();
+        }
+
         protected override void OnKeyUp(object sender, RoutedEventArgs e)
         {
             string _new = __textBox.Text;
@@ -176,6 +198,11 @@ namespace ObjectEdit
 
     public class PropertyDoubleControl : PropertyTextControl
     {
+        public override PropertyEditControl Copy()
+        {
+            return new PropertyLongControl();
+        }
+
         protected override void OnKeyUp(object sender, RoutedEventArgs e)
         {
             string _new = __textBox.Text;
@@ -199,6 +226,11 @@ namespace ObjectEdit
 
     public class PropertyDateControl : PropertyEditControl
     {
+        public override PropertyEditControl Copy()
+        {
+            return new PropertyDateControl();
+        }
+
         public override void UpdateControl()
         {
             
@@ -214,6 +246,11 @@ namespace ObjectEdit
 
     public class PropertyTimeSpanControl : PropertyEditControl
     {
+        public override PropertyEditControl Copy()
+        {
+            return new PropertyTimeSpanControl();
+        }
+
         public override void UpdateControl()
         {
             
@@ -227,6 +264,14 @@ namespace ObjectEdit
 
     public class PropertyObjectSelectionControl : PropertyEditControl
     {
+        public override PropertyEditControl Copy()
+        {
+            PropertyObjectSelectionControl _copy = new PropertyObjectSelectionControl();
+            _copy.DataDisplay = DataDisplay;
+            _copy.ObjectsToDisplay = ObjectsToDisplay;
+            return _copy;
+        }
+
         public PropertyObjectSelectionControl(){ }
 
         public PropertyObjectSelectionControl(DataDisplay dataDisplay, IList objectsToDisplay)
@@ -417,8 +462,13 @@ namespace ObjectEdit
         ComboBox __combobox = new ComboBox();
     }
 
-    public class PropertyEnumClontrol : PropertyEditControl
+    public class PropertyEnumControl : PropertyEditControl
     {
+        public override PropertyEditControl Copy()
+        {
+            return new PropertyEnumControl();
+        }
+
         public override void UpdateControl()
         {
             __combobox.SelectionChanged -= OnSelectionChanged;

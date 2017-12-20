@@ -29,6 +29,16 @@ namespace ShLayouts
             Insert(Count, e);
         }
 
+        public void AddSpacer()
+        {
+            Add(new Spacer());
+        }
+
+        public void AddFixedSpacer(double size)
+        {
+            Add(new FixedSpacer(size));
+        }
+
         public void Insert(int index, FrameworkElement e)
         {
             switch (Layout.Orientation)
@@ -40,9 +50,6 @@ namespace ShLayouts
                     InsertVertical(index, e);
                     break;
             }
-            
-            if(e is Spacer _spacer && double.IsPositiveInfinity(_spacer.MaxSpace))
-                ++ SpacersInfinite; 
         }
 
         public void Remove(FrameworkElement e)
@@ -50,8 +57,6 @@ namespace ShLayouts
             int _index = IndexOf(e);
             if(RemoveAt(_index))
             {
-                if(e is Spacer _spacer && double.IsPositiveInfinity(_spacer.MaxSpace))
-                    -- SpacersInfinite;
                 Update();
             }
         }
@@ -59,7 +64,6 @@ namespace ShLayouts
         public void Clear()
         {
             Layout.Children.Clear();
-            //UpDate();
         }
 
         public int Count
@@ -188,13 +192,11 @@ namespace ShLayouts
 
         private int SpacersInfinite { get; set; }
 
-        public bool HasSpacersInfinite
-        { 
-            get => SpacersInfinite > 0; 
-        }
-
         #region Update
 
+        /// <summary>
+        /// Calcule et applique les valeurs minimumes de dimension.
+        /// </summary>
         public void Update()
         {
             UpdateSizes();
@@ -205,6 +207,10 @@ namespace ShLayouts
                 _layout.Model.Update();
         }
 
+        /// <summary>
+        /// Calcule TotalOrientedElementsMinSize,
+        /// GreatestPerpendicularElementMinSize et GreatestPerpendicularElementMaxSize.
+        /// </summary>
         private void UpdateSizes()
         {
             TotalOrientedElementsMinSize = 0;
@@ -231,6 +237,9 @@ namespace ShLayouts
             }
         }
 
+        /// <summary>
+        /// Applique TotalOrientedElementsMinSize et GreatestPerpendicularElementMinSize.
+        /// </summary>
         private void SetMinMaxLayoutSizes()
         {
             if(Layout.Orientation == Orientation.Horizontal)

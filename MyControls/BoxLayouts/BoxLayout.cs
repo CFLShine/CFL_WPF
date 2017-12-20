@@ -16,7 +16,6 @@ namespace ShLayouts
             Orientation = _orientation;
             Model = new BoxLayoutModel(this);
             Init();
-            ShowGridLines = true;
         }
 
         public BoxLayoutModel Model { get; private set; }
@@ -36,6 +35,16 @@ namespace ShLayouts
         public void Add(FrameworkElement e)
         {
             Model.Add(e);
+        }
+
+        public void AddSpacer()
+        {
+            Model.AddSpacer();
+        }
+
+        public void AddFixedSpacer(double size)
+        {
+            Model.AddFixedSpacer(size);
         }
 
         /// <summary>

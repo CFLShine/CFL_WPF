@@ -2,6 +2,9 @@
 using CFL_1.CFL_Data;
 using ObjectEdit;
 using ShLayouts;
+using CFL_DataManaging;
+using MSTD;
+using RuntimeExec;
 
 namespace CFL_1.CFLGraphics.CFLControls
 {
@@ -24,6 +27,7 @@ namespace CFL_1.CFLGraphics.CFLControls
 
         private void ShowDefunt()
         {
+            __defunt_coordonnees.Object = Defunt.Coordonnees;
             __defunt_identite.Object = Defunt.Identite;
             __defunt_naissance.Object = Defunt.Naissance;
         }
@@ -57,13 +61,30 @@ namespace CFL_1.CFLGraphics.CFLControls
 
             /////////////////// layouts /////////////////////////////
 
-            __tabEtatCivil.Content = __layoutEtatcivil;
+            __tabEtatCivil.Content = __layoutEtatCivil;
             __tabDeces.Content = __layoutDeces;
 
             /////////////////// controls d'édition //////////////////
 
-            __layoutEtatcivil.Add(__defunt_identite);
-            __layoutEtatcivil.Add(__defunt_naissance);
+            PropertyObjectSelectionControl _communeSelect = new PropertyObjectSelectionControl()
+                                                            {
+                                                                ObjectsToDisplay = Communes_manage.Instance.GetCommunes(),
+                                                                DataDisplay = new DataDisplay
+                                                                (
+                                                                    new REMemberExpression(typeof(Commune), ()=>((Commune)null).nom),
+                                                                    new REValue(" "),
+                                                                    new REMemberExpression(typeof(Commune), ()=>((Commune)null).codePost)
+                                                                )
+                                                            };
+
+            __defunt_coordonnees.AddConfigForType(typeof(Commune), _communeSelect);
+            __defunt_naissance.IncludeSubObjects = true;
+            __defunt_naissance.AddConfigForType(typeof(Commune), _communeSelect);
+            __defunt_identite.AddConfigForType(typeof(Commune), _communeSelect);
+            __layoutEtatCivil.Add(__defunt_coordonnees);
+            __layoutEtatCivil.Add(__defunt_identite);
+            __layoutEtatCivil.Add(__defunt_naissance);
+            __layoutEtatCivil.AddSpacer();
 
         }
 
@@ -94,10 +115,11 @@ namespace CFL_1.CFLGraphics.CFLControls
         private TabItem __tabExhumation = new TabItem()         { Header = "Exhumation" };
         private TabItem __tabRDVOrdo = new TabItem()            { Header = "RDV Ordonnateur" };
 
-        private VBoxLayout __layoutEtatcivil = new VBoxLayout();
+        private VBoxLayout __layoutEtatCivil = new VBoxLayout();
         private VBoxLayout __layoutDeces = new VBoxLayout();
         private VBoxLayout __layoutFiliation = new VBoxLayout();
 
+        private ObjectEditControl __defunt_coordonnees = new ObjectEditControl();
         private ObjectEditControl __defunt_identite = new ObjectEditControl();
         private ObjectEditControl __defunt_naissance = new ObjectEditControl();
 
